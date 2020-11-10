@@ -39,7 +39,7 @@ const Login = () => {
           </Form.Item>
 
           <a className="login-form-forgot" href="">
-            Forgot password
+            忘记密码
           </a>
         </Form.Item>
         <Form.Item>
