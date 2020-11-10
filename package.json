@@ -174,5 +174,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "homepage": "https://flynn-eye.github.io/react-admin"
 }
