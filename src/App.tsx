@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { IRootState } from './store/reducers';
-import './App.css';
+import './App.scss';
 import { NCommonAction } from './store/actions/commonAction';
 import { NCommonModal } from './store/modal/commonModal';
 import { Button } from 'antd';
