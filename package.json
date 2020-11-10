@@ -81,7 +81,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "cross-env CI=false node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -97,7 +97,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,less}": [
-        "prettier --write "
+      "prettier --write "
     ]
   },
   "browserslist": {
@@ -116,6 +116,7 @@
     "@babel/plugin-transform-typescript": "^7.12.1",
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6",
+    "cross-env": "^7.0.2",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2"
