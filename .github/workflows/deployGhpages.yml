@@ -7,11 +7,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+    - uses: actions/checkout@v2
+    
+    - name: Deploy react app to github pages
+    uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
       env:
         ACCESS_TOKEN: ${{ secrets.SAMEASTRAVIS }}
         BRANCH: gh-pages
