@@ -6,6 +6,7 @@ export default () => {
     <HashRouter>
       <Switch>
         <Route exact path="/login" component={Login}></Route>
+        <Redirect to="/login" />
       </Switch>
     </HashRouter>
   );
