@@ -1,0 +1,10 @@
+.fullLayout {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #f0f2f5;
+  background-position: center 110px;
+  background-size: 100% 100%;
+  min-height: 100%;
+}

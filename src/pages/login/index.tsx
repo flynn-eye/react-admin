@@ -2,7 +2,7 @@ import React from 'react';
 import FullLayout from '../../layout/fullLayout';
 import background from '../../asserts/background.svg';
 import './index.scss';
-import { Form, Input, Button, Checkbox, Tabs, Row, Col } from 'antd';
+import { Form, Input, Button, Checkbox, Tabs, Row } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
@@ -12,13 +12,21 @@ import {
 } from '@ant-design/icons';
 import logo from '../../asserts/logo.svg';
 import Footer from '../../components/footer';
+interface IPasswordForm {
+  username: string;
+  phone: string;
+}
+interface IPhoneForm {
+  phone: string;
+  captcha: string;
+}
 const { TabPane } = Tabs;
 const Login = () => {
   return (
     <FullLayout backgroundImg={background}>
       <div className="login__container">
         <Row align="middle" justify="center">
-          <img className="login__logo" src={logo} />
+          <img alt="" className="login__logo" src={logo} />
           <span className="login__title">Ant Design</span>
         </Row>
         <Row align="middle" justify="center">
@@ -39,13 +47,10 @@ const Login = () => {
     </FullLayout>
   );
 };
-const onFinish = (values: any) => {
-  console.log('Received values of form: ', values);
-};
 const PhoneLogin = () => {
   return (
-    <Form name="phoneLogin" initialValues={{ remember: true }} onFinish={onFinish}>
-      <Form.Item name="username" rules={[{ required: true, message: '请输入账户' }]}>
+    <Form name="phoneLogin" initialValues={{ remember: true }} onFinish={passwordFormFinish}>
+      <Form.Item name="phone" rules={[{ required: true, message: '请输入手机号' }]}>
         <Input
           className="phone__input"
           size="large"
@@ -53,21 +58,25 @@ const PhoneLogin = () => {
           placeholder="手机号"
         />
       </Form.Item>
-      <Form.Item name="password" rules={[{ required: true, message: '请输入密码!' }]}>
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="验证码"
-          className="captcha__input"
-          size="large"
-        />
-        <Button>获取验证码</Button>
+      <Form.Item name="captcha" rules={[{ required: true, message: '请输入验证码!' }]}>
+        <Row justify="space-between">
+          <Input
+            prefix={<LockOutlined className="site-form-item-icon" />}
+            type="password"
+            placeholder="验证码"
+            className="captcha__input"
+            size="large"
+          />
+          <Button size="large">获取验证码</Button>
+        </Row>
       </Form.Item>
       <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>记住密码</Checkbox>
-        </Form.Item>
-        <a href="">忘记密码</a>
+        <Row justify="space-between">
+          <Form.Item name="remember" valuePropName="checked" noStyle>
+            <Checkbox>记住密码</Checkbox>
+          </Form.Item>
+          <a href="">忘记密码</a>
+        </Row>
       </Form.Item>
       <Form.Item>
         <Button className="password__button" size="large" type="primary" htmlType="submit">
@@ -89,7 +98,7 @@ const PhoneLogin = () => {
 };
 const PasswordLogin = () => {
   return (
-    <Form name="passwordLogin" initialValues={{ remember: true }} onFinish={onFinish}>
+    <Form name="passwordLogin" initialValues={{ remember: true }} onFinish={phoneFormFinish}>
       <Form.Item name="username" rules={[{ required: true, message: '请输入账户' }]}>
         <Input
           size="large"
@@ -132,5 +141,11 @@ const PasswordLogin = () => {
       </Form.Item>
     </Form>
   );
+};
+const passwordFormFinish = (values: IPasswordForm) => {
+  console.log('Received password form: ', values);
+};
+const phoneFormFinish = (values: IPhoneForm) => {
+  console.log('Received phone form: ', values);
 };
 export default Login;

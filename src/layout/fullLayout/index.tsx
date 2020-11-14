@@ -1,16 +1,17 @@
 import React from 'react';
+import './index.scss';
 interface Props {
   backgroundImg: string;
 }
 const FullLayout: React.FC<Props> = (props) => {
   console.log(props);
   const bgd = {
-    backgroundImage: `url(${props.backgroundImg})`,
-    backgroundColor: '#f0f2f5',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center 110px',
-    backgroundSize: '100%'
+    backgroundImage: `url(${props.backgroundImg})`
   };
-  return <div style={bgd}>{props.children}</div>;
+  return (
+    <div className="fullLayout" style={bgd}>
+      {props.children}
+    </div>
+  );
 };
 export default FullLayout;

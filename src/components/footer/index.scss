@@ -2,12 +2,22 @@
   color: rgba(0, 0, 0, 0.45);
   margin: {
     top: 48px;
+    bottom: 24px;
   }
   & .footer__githubLogo {
     line-height: 1.2rem;
     margin: {
       right: 1rem;
       left: 1rem;
+    }
+    & :hover {
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+  & .link-hover {
+    color: rgba(0, 0, 0, 0.45);
+    &:hover {
+      color: rgba(0, 0, 0, 0.85);
     }
   }
   & .footer__copyright {
