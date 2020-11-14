@@ -4,12 +4,14 @@ export interface IConfig {
   fixHeader: TFixHeader;
   theme: ETheme;
   language: Elanguage;
+  showFooter: TShowFooter;
 }
 export enum ELayoutMode {
   top = 'top',
   left = 'left'
 }
 type TFixHeader = true | false;
+type TShowFooter = true | false;
 export enum ETheme {
   dark = 'dark',
   white = 'white'
@@ -22,6 +24,7 @@ let config: IConfig = {
   layoutMode: ELayoutMode.top,
   fixHeader: true,
   theme: ETheme.dark,
-  language: Elanguage.ch
+  language: Elanguage.ch,
+  showFooter: true
 };
 export default config;
