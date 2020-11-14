@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/dashBoard/index.tsx"],"names":["DashBoard"],"mappings":"wIAAA,kCAKeA,UAHG,WAChB,OAAO","file":"static/js/5.55249618.chunk.js","sourcesContent":["import React from 'react';\nimport './index.scss';\nconst DashBoard = () => {\n  return <div>dashboard</div>;\n};\nexport default DashBoard;\n"],"sourceRoot":""}

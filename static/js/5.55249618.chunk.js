@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-admin"]=this["webpackJsonpreact-admin"]||[]).push([[5],{255:function(n,t,a){},266:function(n,t,a){"use strict";a.r(t);var e=a(0),c=a.n(e);a(255);t.default=function(){return c.a.createElement("div",null,"dashboard")}}}]);
+//# sourceMappingURL=5.55249618.chunk.js.map
