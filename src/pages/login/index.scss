@@ -1,7 +1,36 @@
 .login__container {
-  height: 100%;
+  padding: {
+    top: 70px;
+  }
   & .password__input {
     min-width: 326px;
+  }
+  & .login__title {
+    font: {
+      size: 1.375rem;
+      weight: 600;
+    }
+  }
+  & .captcha__input {
+    width: 200.66px;
+  }
+  & .phone__input {
+    min-width: 326px;
+  }
+  & .login__logo {
+    width: 1.83rem;
+    margin: {
+      right: 16px;
+    }
+    vertical-align: top;
+  }
+  & .login__tip {
+    margin: {
+      top: 12px;
+      bottom: 40px;
+    }
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 14px;
   }
   & .password__button {
     min-width: 368px;

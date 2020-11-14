@@ -10,12 +10,21 @@ import {
   WeiboCircleFilled,
   TaobaoCircleFilled
 } from '@ant-design/icons';
+import logo from '../../asserts/logo.svg';
+import Footer from '../../components/footer';
 const { TabPane } = Tabs;
 const Login = () => {
   return (
     <FullLayout backgroundImg={background}>
-      <Row className="login__container" align="middle" justify="center">
-        <Row>
+      <div className="login__container">
+        <Row align="middle" justify="center">
+          <img className="login__logo" src={logo} />
+          <span className="login__title">Ant Design</span>
+        </Row>
+        <Row align="middle" justify="center">
+          <span className="login__tip">Ant Design 是西湖区最具影响力的 Web 设计规范</span>
+        </Row>
+        <Row align="middle" justify="center">
           <Tabs defaultActiveKey="1">
             <TabPane tab="账户密码登录" key="1">
               <PasswordLogin />
@@ -25,7 +34,8 @@ const Login = () => {
             </TabPane>
           </Tabs>
         </Row>
-      </Row>
+        <Footer />
+      </div>
     </FullLayout>
   );
 };
@@ -36,14 +46,22 @@ const PhoneLogin = () => {
   return (
     <Form name="phoneLogin" initialValues={{ remember: true }} onFinish={onFinish}>
       <Form.Item name="username" rules={[{ required: true, message: '请输入账户' }]}>
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="" />
+        <Input
+          className="phone__input"
+          size="large"
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="手机号"
+        />
       </Form.Item>
       <Form.Item name="password" rules={[{ required: true, message: '请输入密码!' }]}>
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder=""
+          placeholder="验证码"
+          className="captcha__input"
+          size="large"
         />
+        <Button>获取验证码</Button>
       </Form.Item>
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
@@ -57,7 +75,14 @@ const PhoneLogin = () => {
         </Button>
       </Form.Item>
       <Form.Item>
-        <a href="">注册</a>
+        <Row justify="space-between">
+          <Form.Item label="其他登录方式" colon={false} className="login__iconGroup">
+            <AlipayCircleFilled className="login__icon" />
+            <WeiboCircleFilled className="login__icon" />
+            <TaobaoCircleFilled className="login__icon" />
+          </Form.Item>
+          <a href="">注册账户</a>
+        </Row>
       </Form.Item>
     </Form>
   );
