@@ -1,0 +1,32 @@
+.headerSerach {
+  height: 48px;
+  & .searchIcon {
+    font-size: 20px;
+    vertical-align: text-top;
+  }
+  input {
+    padding-right: 0;
+    padding-left: 0;
+
+    box-shadow: none !important;
+  }
+  & .input-hidden {
+    display: none;
+  }
+  & .input {
+    transition: width 0.3s;
+    vertical-align: middle;
+  }
+  & /deep/ .ant-select-selection-search-input {
+    width: 210px !important;
+    border: {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 1px solid #d9d9d9;
+    }
+    &:focus {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    }
+  }
+}

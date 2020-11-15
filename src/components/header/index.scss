@@ -1,0 +1,32 @@
+.global__container {
+  height: 48px;
+  line-height: 48px;
+  .userProfile {
+    cursor: pointer;
+    width: 112px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+    .name {
+      width: 57px;
+    }
+    .avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 100%;
+      margin-right: 10px;
+    }
+  }
+  .icon {
+    width: 48px;
+    text-align: center;
+    font-size: 0.75rem;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+  }
+}

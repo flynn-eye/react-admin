@@ -7,6 +7,10 @@
   & .header {
     height: 48px;
     background-color: white;
+    padding: {
+      left: 20px;
+      right: 20px;
+    }
   }
   & > .sider {
     min-height: 100vh;

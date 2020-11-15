@@ -5,6 +5,7 @@ import { IConfig } from '../../../util/config';
 import FooterContent from '../../../components/footer';
 import Menu from '../../../components/menu';
 import logo from '../../../asserts/logo.svg';
+import GlobalHeader from '../../../components/header';
 const { Header, Footer, Sider, Content } = Layout;
 interface ITitleStyle {
   display: string;
@@ -15,7 +16,6 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
     display: 'inline-block'
   });
   let changeTitleStatus = () => {
-    console.log(titleStyle);
     if (titleStyle.display === 'none') {
       setTitleStyle({
         display: 'inline-block'
@@ -43,7 +43,9 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
         <Menu language={language} theme={theme} layoutMode={layoutMode} fixHeader={fixHeader} />
       </Sider>
       <Layout>
-        <Header className="header"></Header>
+        <Header className="header">
+          <GlobalHeader />
+        </Header>
         <Content>Content</Content>
         <Footer>
           <FooterContent />
