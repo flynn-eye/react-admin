@@ -1,0 +1,30 @@
+.LeftMenuLayout__container {
+  & /deep/ .footer__container {
+    margin: {
+      bottom: 0px;
+    }
+  }
+  & .header {
+    height: 48px;
+    background-color: white;
+  }
+  & > .sider {
+    min-height: 100vh;
+    & .sider__logo {
+      height: 64px;
+    }
+    & img {
+      width: 1.5rem;
+    }
+    & h1 {
+      display: inline-block;
+      height: 32px;
+      margin: 0 0 0 12px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 32px;
+      vertical-align: middle;
+    }
+  }
+}

@@ -2,6 +2,8 @@ import { lazy, LazyExoticComponent, FunctionComponent } from 'react';
 const DashBoard = lazy(() => import('../pages/dashBoard'));
 const Error403 = lazy(() => import('../pages/error/403'));
 const Error404 = lazy(() => import('../pages/error/404'));
+const MenuLayout = lazy(() => import('../layout/menuLayout/index'));
+
 export interface IRoute {
   path: string;
   role: string[];
@@ -17,6 +19,11 @@ let routes: IRoute[] = [
   {
     path: '/dashboard',
     component: DashBoard,
+    role: [ERole.tour, ERole.admin, ERole.user]
+  },
+  {
+    path: '/menuLayout',
+    component: MenuLayout,
     role: [ERole.tour, ERole.admin, ERole.user]
   }
 ];
