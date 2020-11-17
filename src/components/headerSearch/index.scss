@@ -1,5 +1,8 @@
 .headerSerach {
   height: 48px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
   & .searchIcon {
     font-size: 20px;
     vertical-align: text-top;
