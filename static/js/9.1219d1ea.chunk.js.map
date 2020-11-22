@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/error/403/index.tsx"],"names":["Error403"],"mappings":"wIAAA,kCAKeA,UAHE,WACf,OAAO","file":"static/js/9.1219d1ea.chunk.js","sourcesContent":["import React from 'react';\nimport './index.scss';\nconst Error403 = () => {\n  return <>403</>;\n};\nexport default Error403;\n"],"sourceRoot":""}

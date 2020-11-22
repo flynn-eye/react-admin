@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/error/404/index.tsx"],"names":["Error404"],"mappings":"yIAAA,kCAKeA,UAHE,WACf,OAAO","file":"static/js/10.30233fd3.chunk.js","sourcesContent":["import React from 'react';\nimport './index.scss';\nconst Error404 = () => {\n  return <>404</>;\n};\nexport default Error404;\n"],"sourceRoot":""}
