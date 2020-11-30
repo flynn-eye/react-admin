@@ -14,17 +14,23 @@ import logo from '../../asserts/logo.svg';
 interface IProps {
   isMenuOpen: boolean;
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+  isMobile: boolean;
+  handleCollapsed: () => void;
 }
 const Header = (props: IProps) => {
-  const { isMenuOpen, setIsMenuOpen } = props;
+  const { isMenuOpen, setIsMenuOpen, isMobile, handleCollapsed } = props;
   let OpenIcon = null;
   const openMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    if (isMobile) {
+      setIsMenuOpen(!isMenuOpen);
+    } else {
+      handleCollapsed();
+    }
   };
   if (isMenuOpen) {
-    OpenIcon = <MenuFoldOutlined onClick={openMenu} />;
+    OpenIcon = <MenuFoldOutlined className="menuFold" onClick={openMenu} />;
   } else {
-    OpenIcon = <MenuUnfoldOutlined onClick={openMenu} />;
+    OpenIcon = <MenuUnfoldOutlined className="menuFold" onClick={openMenu} />;
   }
   return (
     <>

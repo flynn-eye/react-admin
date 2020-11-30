@@ -13,9 +13,11 @@ interface ITitleStyle {
 const LeftMenuLayout: FC<IConfig> = (props) => {
   const { layoutMode, fixHeader, theme, language } = props;
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  let [titleStyle, setTitleStyle] = useState({
+  const [titleStyle, setTitleStyle] = useState({
     display: 'inline-block'
   });
+  const [isCollapsed, setCollapsed] = useState<boolean>(false);
+  const [isMobile, setMobileStatus] = useState<boolean>(true);
   let changeTitleStatus = () => {
     if (titleStyle.display === 'none') {
       setTitleStyle({
@@ -27,12 +29,21 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
       });
     }
   };
+  const handleCollapse: () => void = () => {
+    changeTitleStatus();
+    setCollapsed(!isCollapsed);
+  };
   const XSider = (
     <Sider
       onCollapse={() => changeTitleStatus()}
       breakpoint="md"
       collapsible={true}
+      collapsed={isCollapsed}
       className="siderShow sider"
+      onBreakpoint={() => {
+        setMobileStatus(!isMobile);
+      }}
+      trigger={null}
     >
       <Row justify="center" align="middle" className="sider__logo">
         <a>
@@ -45,7 +56,12 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
   );
   const DrawerSider = (
     <div className="LeftMenuLayout__container">
-      <Sider onCollapse={() => changeTitleStatus()} collapsible={true} className="sider">
+      <Sider
+        trigger={null}
+        onCollapse={() => changeTitleStatus()}
+        collapsible={true}
+        className="sider"
+      >
         <Row justify="center" align="middle" className="sider__logo">
           <a>
             <img src={logo} alt="" />
@@ -62,7 +78,12 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
         {XSider}
         <Layout>
           <Header className="header">
-            <GlobalHeader isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+            <GlobalHeader
+              handleCollapsed={handleCollapse}
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+              isMobile={isMobile}
+            />
           </Header>
           <Content>Content</Content>
           <Footer>
