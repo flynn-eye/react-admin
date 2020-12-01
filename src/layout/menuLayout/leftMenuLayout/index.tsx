@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useMemo } from 'react';
 import './index.scss';
 import { Layout, Row, Drawer } from 'antd';
 import { IConfig } from '../../../util/config';
@@ -12,10 +12,12 @@ interface ITitleStyle {
 }
 const LeftMenuLayout: FC<IConfig> = (props) => {
   const { layoutMode, fixHeader, theme, language } = props;
+  /* 控制drawer菜单 */
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [titleStyle, setTitleStyle] = useState({
     display: 'inline-block'
   });
+  /* 控制侧边菜单 */
   const [isCollapsed, setCollapsed] = useState<boolean>(false);
   const [isMobile, setMobileStatus] = useState<boolean>(true);
   let changeTitleStatus = () => {
@@ -35,7 +37,6 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
   };
   const XSider = (
     <Sider
-      onCollapse={() => changeTitleStatus()}
       breakpoint="md"
       collapsible={true}
       collapsed={isCollapsed}
@@ -56,12 +57,7 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
   );
   const DrawerSider = (
     <div className="LeftMenuLayout__container">
-      <Sider
-        trigger={null}
-        onCollapse={() => changeTitleStatus()}
-        collapsible={true}
-        className="sider"
-      >
+      <Sider trigger={null} collapsible={true} className="sider">
         <Row justify="center" align="middle" className="sider__logo">
           <a>
             <img src={logo} alt="" />

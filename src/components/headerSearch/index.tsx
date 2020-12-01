@@ -36,8 +36,7 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
       onClick={() => {
         setInputClassName('input');
         if (inputRef.current) {
-          console.log(inputRef.current, 11);
-          inputRef.current.focus();
+          console.log(inputRef.current.input);
         }
       }}
       onTransitionEnd={({ propertyName }) => {
@@ -64,9 +63,6 @@ const HeaderSearch: React.FC<HeaderSearchProps> = (props) => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               console.log(value);
-              //   if (restProps.onSearch) {
-              //     restProps.onSearch(value);
-              //   }
             }
           }}
           onBlur={() => {
