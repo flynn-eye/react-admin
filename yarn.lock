@@ -107,8 +107,8 @@
 
 "@antv/data-set@^0.11.7":
   version "0.11.7"
-  resolved "http://npm.petkit.com/@antv%2fdata-set/-/data-set-0.11.7.tgz#a0effbcf8a51dc8af4c03cc1d19f9bc6dbae057a"
-  integrity sha512-TP62M4ZGda/6dhz+XvmsghMSpkrmRLsLiRFfPfYQVM9+QZAzvGisVayj9x0xMSBBwDwjKE69LeDTFFMQJlTnog==
+  resolved "https://registry.npm.taobao.org/@antv/data-set/download/@antv/data-set-0.11.7.tgz?cache=0&sync_timestamp=1600951964559&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40antv%2Fdata-set%2Fdownload%2F%40antv%2Fdata-set-0.11.7.tgz#a0effbcf8a51dc8af4c03cc1d19f9bc6dbae057a"
+  integrity sha1-oO/7z4pR3Ir0wDzB0Z+bxtuuBXo=
   dependencies:
     "@antv/hierarchy" "^0.6.0"
     "@antv/util" "^2.0.0"
