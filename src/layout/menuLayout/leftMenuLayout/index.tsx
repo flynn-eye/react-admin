@@ -6,7 +6,6 @@ import FooterContent from '../../../components/footer';
 import Menu from '../../../components/menu';
 import logo from '../../../asserts/logo.svg';
 import GlobalHeader from '../../../components/header';
-import StarMap from '../../../components/charts/star';
 
 const { Header, Footer, Sider, Content } = Layout;
 interface ITitleStyle {
