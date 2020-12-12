@@ -10,7 +10,7 @@ const AsyncRouter = (props: any) => {
         <Redirect exact from="/" to="/dashboard" />
         {routes.map((item) => {
           if (item.role.includes(role)) {
-            let AsyncComponent = item.component;
+            let AsyncComponent = item.layout;
             return (
               <Route
                 exact
@@ -18,8 +18,10 @@ const AsyncRouter = (props: any) => {
                 path={item.path}
                 render={() => {
                   return (
-                    <Suspense fallback={<div>123</div>}>
-                      {AsyncComponent ? <AsyncComponent /> : null}
+                    <Suspense fallback={<div>waiting</div>}>
+                      {AsyncComponent ? (
+                        <AsyncComponent>{<item.component />}</AsyncComponent>
+                      ) : null}
                     </Suspense>
                   );
                 }}
@@ -30,9 +32,12 @@ const AsyncRouter = (props: any) => {
               <Route
                 key={errorRoutes[0].path}
                 render={() => {
-                  let Error403 = errorRoutes[0].component;
+                  let Error403 = errorRoutes[0].layout;
+                  let Content = errorRoutes[0].component;
                   return (
-                    <Suspense fallback={<div>123</div>}>{Error403 ? <Error403 /> : null}</Suspense>
+                    <Suspense fallback={<div>waiting</div>}>
+                      {Error403 ? <Error403>{<Content />}</Error403> : null}
+                    </Suspense>
                   );
                 }}
               />
@@ -42,8 +47,13 @@ const AsyncRouter = (props: any) => {
         <Route
           key={errorRoutes[1].path}
           render={() => {
-            let Error404 = errorRoutes[1].component;
-            return <Suspense fallback={<div>123</div>}>{Error404 ? <Error404 /> : null}</Suspense>;
+            let Error404 = errorRoutes[1].layout;
+            let Content = errorRoutes[0].component;
+            return (
+              <Suspense fallback={<div>waiting</div>}>
+                {Error404 ? <Error404>{<Content />}</Error404> : null}
+              </Suspense>
+            );
           }}
         />
       </Switch>

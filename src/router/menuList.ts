@@ -12,8 +12,8 @@ const menuList: IMenu[] = [
     icon: DashboardOutlined
   },
   {
-    name: '布局',
-    path: '/menuLayout',
+    name: '地图',
+    path: '/worldMap',
     icon: UserOutlined
   },
   {

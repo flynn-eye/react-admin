@@ -5,6 +5,9 @@
       bottom: 0px;
     }
   }
+  & /deep/.ant-layout-content {
+    min-height: auto;
+  }
   & .header {
     height: 48px;
     background-color: white;

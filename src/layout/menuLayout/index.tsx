@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './index.scss';
 import LeftMenuLayout from './leftMenuLayout';
 import TopMenuLayout from './topMenuLayout';
 import { IConfig, config } from '../../util/config';
-const MenuLayout = () => {
+const MenuLayout: FC = (props) => {
   const localConfig = localStorage.getItem('config');
   let configObj: IConfig = config;
   if (localConfig) {
@@ -11,9 +11,9 @@ const MenuLayout = () => {
   }
   let { layoutMode } = configObj;
   if (layoutMode === 'top') {
-    return <TopMenuLayout {...configObj} />;
+    return <TopMenuLayout {...configObj}>{props.children}</TopMenuLayout>;
   } else {
-    return <LeftMenuLayout {...configObj} />;
+    return <LeftMenuLayout {...configObj}>{props.children}</LeftMenuLayout>;
   }
 };
 export default MenuLayout;

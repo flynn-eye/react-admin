@@ -1,4 +1,4 @@
-import React, { FC, useState, useMemo } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import './index.scss';
 import { Layout, Row, Drawer } from 'antd';
 import { IConfig } from '../../../util/config';
@@ -16,11 +16,25 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
   /* 控制drawer菜单 */
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [titleStyle, setTitleStyle] = useState({
-    display: 'inline-block'
+    display: 'none'
   });
+  useEffect((): any => {
+    window.addEventListener('resize', () => {
+      if (document.body.clientWidth >= 576) {
+        setMobileStatus(false);
+      } else {
+        setMobileStatus(true);
+      }
+    });
+    return () => {
+      window.removeEventListener('resize', () => {
+        console.log('resize被移除');
+      });
+    };
+  }, []);
   /* 控制侧边菜单 */
-  const [isCollapsed, setCollapsed] = useState<boolean>(false);
-  const [isMobile, setMobileStatus] = useState<boolean>(true);
+  const [isCollapsed, setCollapsed] = useState<boolean>(true);
+  const [isMobile, setMobileStatus] = useState<boolean>(false);
   let changeTitleStatus = () => {
     if (titleStyle.display === 'none') {
       setTitleStyle({
@@ -43,7 +57,8 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
       collapsed={isCollapsed}
       className="siderShow sider"
       onBreakpoint={() => {
-        setMobileStatus(!isMobile);
+        //setMobileStatus(!isMobile);
+        handleCollapse();
       }}
       trigger={null}
     >
@@ -82,9 +97,7 @@ const LeftMenuLayout: FC<IConfig> = (props) => {
               isMobile={isMobile}
             />
           </Header>
-          <Content>
-            <StarMap />
-          </Content>
+          <Content>{props.children}</Content>
           <Footer>
             <FooterContent />
           </Footer>

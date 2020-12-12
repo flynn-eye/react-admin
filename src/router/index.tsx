@@ -1,8 +1,7 @@
 import React, { Suspense } from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Login from '../pages/login';
 import AsyncRouter from './asyncRouter';
-const Ss = React.lazy(() => import('../pages/login'));
+const Login = React.lazy(() => import('../pages/login'));
 export default () => {
   let token = '321';
   return (
@@ -13,8 +12,8 @@ export default () => {
           path="/login"
           render={() => {
             return (
-              <Suspense fallback={<div>wait</div>}>
-                <Ss />
+              <Suspense fallback={<div>waiting</div>}>
+                <Login />
               </Suspense>
             );
           }}

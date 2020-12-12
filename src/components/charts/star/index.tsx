@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, Suspense } from 'react';
 import DataSet from '@antv/data-set';
 import { Lab } from '@antv/g2plot';
 import './index.scss';
 import NobelData from '../../../asserts/data/chinese.json';
 const { DataView } = DataSet;
-const work = () => {
+const work = (container: HTMLDivElement) => {
   let data = NobelData;
   const COLORS = ['#FA541C', '#ff9300', '#bb82f3', '#6349ec', '#0074ff'];
   let currentYear = 1901;
@@ -52,7 +52,7 @@ const work = () => {
       .rows.map((d) => ({ [field]: d[0][field] }));
   };
 
-  const labChart = new Lab.MultiView('container', {
+  const labChart = new Lab.MultiView(container, {
     height: 500,
     padding: 'auto',
     appendPadding: [20, 0, 20, 0],
@@ -332,9 +332,10 @@ const work = () => {
   start();
 };
 const StarMap = () => {
+  const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    work();
+    work(container.current!);
   }, []);
-  return <div id="container"></div>;
+  return <div ref={container}></div>;
 };
 export default StarMap;
