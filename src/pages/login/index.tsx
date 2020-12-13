@@ -1,8 +1,9 @@
 import React from 'react';
 import FullLayout from '../../layout/fullLayout';
 import background from '../../asserts/background.svg';
+import { useHistory } from 'react-router-dom';
 import './index.scss';
-import { Form, Input, Button, Checkbox, Tabs, Row } from 'antd';
+import { Form, Input, Button, Checkbox, Tabs, Row, message } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
@@ -14,7 +15,7 @@ import logo from '../../asserts/logo.svg';
 import Footer from '../../components/footer';
 interface IPasswordForm {
   username: string;
-  phone: string;
+  password: string;
 }
 interface IPhoneForm {
   phone: string;
@@ -48,8 +49,12 @@ const Login = () => {
   );
 };
 const PhoneLogin = () => {
+  const history = useHistory();
+  const phoneFormFinish = (values: IPhoneForm) => {
+    console.log(history, values);
+  };
   return (
-    <Form name="phoneLogin" initialValues={{ remember: true }} onFinish={passwordFormFinish}>
+    <Form name="phoneLogin" initialValues={{ remember: true }} onFinish={phoneFormFinish}>
       <Form.Item name="phone" rules={[{ required: true, message: '请输入手机号' }]}>
         <Input
           className="phone__input"
@@ -97,8 +102,27 @@ const PhoneLogin = () => {
   );
 };
 const PasswordLogin = () => {
+  const history = useHistory();
+  const [passwordForm] = Form.useForm();
+  const passwordFormFinish = (values: IPasswordForm) => {
+    if (
+      (values.username === 'admin' || values.username === 'user') &&
+      values.password === '123456'
+    ) {
+      history.push('/dashboard');
+      localStorage.setItem('role', values.username);
+    } else {
+      passwordForm.resetFields();
+      message.error('账户或者密码错误');
+    }
+  };
   return (
-    <Form name="passwordLogin" initialValues={{ remember: true }} onFinish={phoneFormFinish}>
+    <Form
+      form={passwordForm}
+      name="passwordLogin"
+      initialValues={{ remember: true }}
+      onFinish={passwordFormFinish}
+    >
       <Form.Item name="username" rules={[{ required: true, message: '请输入账户' }]}>
         <Input
           size="large"
@@ -141,11 +165,5 @@ const PasswordLogin = () => {
       </Form.Item>
     </Form>
   );
-};
-const passwordFormFinish = (values: IPasswordForm) => {
-  console.log('Received password form: ', values);
-};
-const phoneFormFinish = (values: IPhoneForm) => {
-  console.log('Received phone form: ', values);
 };
 export default Login;

@@ -6,13 +6,13 @@ const work = (container: HTMLDivElement): RingProgress => {
     width: 240,
     autoFit: true,
     percent: (2015 - 1901) / (new Date().getFullYear() - 1901),
-    color: ['#5B8FF9', '#E8EDF3'],
+    color: ['#64DAAB', '#E8EDF3'],
     innerRadius: 0.85,
     radius: 0.98,
     statistic: {
       title: {
         style: { color: '#363636', fontSize: '12px', lineHeight: '14px' },
-        formatter: () => '数据时间:2016~' + new Date().getFullYear()
+        formatter: () => '数据时间:1901~2015'
       }
     }
   });
