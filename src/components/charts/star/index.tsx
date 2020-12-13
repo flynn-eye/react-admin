@@ -6,7 +6,7 @@ import NobelData from '../../../asserts/data/chinese.json';
 const { DataView } = DataSet;
 const work = (container: HTMLDivElement) => {
   let data = NobelData;
-  const COLORS = ['#FA541C', '#ff9300', '#bb82f3', '#6349ec', '#0074ff'];
+  const COLORS = ['#5B8FF9', '#5AD8A6', '#5D7092', '#F6BD16', '#6F5EF9'];
   let currentYear = 1901;
   /** 散点图数据（各国诺贝尔奖获奖者的年龄分布） */
   const getPointViewData = (year: any) => {

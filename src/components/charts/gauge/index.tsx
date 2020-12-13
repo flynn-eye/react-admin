@@ -5,7 +5,7 @@ const work = (container: HTMLDivElement): RingProgress => {
     height: 240,
     width: 240,
     autoFit: true,
-    percent: (2016 - 1901) / (new Date().getFullYear() - 1901),
+    percent: (2015 - 1901) / (new Date().getFullYear() - 1901),
     color: ['#5B8FF9', '#E8EDF3'],
     innerRadius: 0.85,
     radius: 0.98,
